@@ -37,7 +37,7 @@ import com.example.notembernew.widget.NotesWidget;
 
 import java.util.ArrayList;
 
-public class SearchActitivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, SearchView.OnQueryTextListener {
+public class SearchActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>, SearchView.OnQueryTextListener {
     boolean lightTheme, changed;
     ArrayList<NoteObj> noteObjArrayList;
     RecyclerView recyclerView;

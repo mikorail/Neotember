@@ -1,10 +1,14 @@
 package com.example.notembernew.ui;
 import android.animation.ObjectAnimator;
+import android.app.LoaderManager;
 import android.appwidget.AppWidgetManager;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.Loader;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.PorterDuff;
@@ -14,16 +18,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -48,8 +48,7 @@ import com.example.notembernew.widget.NotesWidget;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor>, android.app.LoaderManager.LoaderCallbacks<Object> {
-
+        implements NavigationView.OnNavigationItemSelectedListener, LoaderManager.LoaderCallbacks<Cursor> {
     public NotesAdapter mAdapter;
     protected NotesDBHelper dbHelper;
     boolean lightTheme, changed;
@@ -102,7 +101,7 @@ public class MainActivity extends AppCompatActivity
 
         lightTheme = pref.getBoolean(Constants.LIGHT_THEME, false);
         if (lightTheme)
-            setTheme(R.style.Theme_AppCompat_Light);
+            setTheme(R.style.AppTheme_Light_DrawerActivity);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -175,9 +174,7 @@ public class MainActivity extends AppCompatActivity
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
                 new IntentFilter("note-list-changed"));
 
-
     }
-
 
     @Override
     protected void onDestroy() {
@@ -325,7 +322,7 @@ public class MainActivity extends AppCompatActivity
             pref.edit().putBoolean(Constants.OLDEST_FIRST, true).apply();
             getLoaderManager().restartLoader(0, null, this);
         } else if (id == R.id.search) {
-            startActivity(new Intent(this, SearchActitivity.class));
+            startActivity(new Intent(this, SearchActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -404,7 +401,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+    public android.content.Loader<Cursor> onCreateLoader(int id, Bundle args) {
         // This is called when a new Loader needs to be created.
         Uri.Builder builder = NotesProvider.BASE_URI.buildUpon().appendPath(NotesDB.Note.TABLE_NAME);
         Uri baseUri = builder.build();
@@ -457,17 +454,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onLoadFinished(android.content.Loader<Object> loader, Object data) {
-
-    }
-
-    @Override
-    public void onLoaderReset(android.content.Loader<Object> loader) {
-
-    }
-
-    @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(android.content.Loader<Cursor> loader, Cursor cursor) {
         if (cursor == null) Log.d("onLoadFinished", "Cursor is null!");
         else {
             noteObjArrayList.clear();

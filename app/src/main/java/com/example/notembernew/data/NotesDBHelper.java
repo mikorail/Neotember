@@ -9,7 +9,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
-import com.example.checklistview.ChecklistData;
+import thedorkknightrises.checklistview.ChecklistData;
 import com.example.notembernew.Constants;
 import com.example.notembernew.NoteObj;
 

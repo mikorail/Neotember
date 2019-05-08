@@ -1,4 +1,4 @@
 package com.example.notembernew.ui;
 
-public class Flashscreen {
+public class IntroActivity {
 }

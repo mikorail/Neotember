@@ -1,8 +1,6 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Notember</string>
     <string name="title_activity_home">HomeActivity</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
@@ -30,7 +28,6 @@
     <string name="change_password">CHANGE PASSWORD</string>
     <string name="remove_user">REMOVE USER</string>
     <string name="sign_out">SIGN OUT</string>
-    <string name="reset">reset</string>
     <string name="minimum_password">Password too short,enter minimum 6 character</string>
     <string name="auth_failed">Failed Authentification check your email and password or sign up</string>
     <string name="register">Register</string>

@@ -1,5 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Notember</string>
+    <string name="package_name">Package name:\u0020</string>
+    <string name="version_name">Version:\u0020</string>
+    <string name="version_code">Version code:\u0020</string>
+    <string name="android_version">Android Version:\u0020</string>
+    <string name="device">Device:\u0020</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
@@ -192,4 +197,6 @@
     <string name="deleted_checklist_cannot_be_edited">Deleted checklist cannot be edited</string>
     <string name="permanently_delete">Delete this item permanently? This action cannot be undone</string>
     <string name="moved_to_trash">Moved to trash</string>
+    <string name="github">Github</string>
+    <string name="notes_provider">Notes Provider</string>
 </resources>

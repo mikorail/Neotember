@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity
 
         lightTheme = pref.getBoolean(Constants.LIGHT_THEME, false);
         if (lightTheme)
-            setTheme(R.style.AppTheme_Light_DrawerActivity);
+            setTheme(R.style.AppTheme_Light);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -332,7 +332,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        if (id == R.id.nav_home) {
+        if (id == R.id.beranda) {
             pref.edit()
                     .putBoolean(Constants.ARCHIVE, false)
                     .putBoolean(Constants.TRASH, false)
@@ -359,7 +359,7 @@ public class MainActivity extends AppCompatActivity
             blankText.setText(R.string.blank_checklists);
             getLoaderManager().restartLoader(0, null, this);
             fab.setVisibility(View.VISIBLE);
-        } else if (id == R.id.nav_archive) {
+        } else if (id == R.id.label) {
             pref.edit()
                     .putBoolean(Constants.ARCHIVE, true)
                     .putBoolean(Constants.TRASH, false)
@@ -368,7 +368,7 @@ public class MainActivity extends AppCompatActivity
             blankText.setText(R.string.blank_archive);
             getLoaderManager().restartLoader(0, null, this);
             fab.setVisibility(View.GONE);
-        } else if (id == R.id.nav_trash) {
+        } else if (id == R.id.sampah) {
             pref.edit()
                     .putBoolean(Constants.ARCHIVE, false)
                     .putBoolean(Constants.TRASH, true)
